@@ -5,7 +5,7 @@ import App from '../App';
 describe('App', () => {
     it('checks if text exists', () => {
         render(<App />);
-        const text = screen.getByText(/Hello World/i);
+        const text = screen.getByText(/Form Example/i);
         expect(text).toBeDefined();
-    })
-})
+    });
+});
