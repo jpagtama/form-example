@@ -7,5 +7,5 @@ describe('App', () => {
         render(<App />);
         const text = screen.getByText(/Form Example/i);
         expect(text).toBeDefined();
-    })
-})
+    });
+});
