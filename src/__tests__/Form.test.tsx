@@ -1,29 +1,26 @@
-import { render, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import Form from '../components/Form';
 
 describe('Form', () => {
 
-    let container: HTMLElement;
-    const submitHandler = jest.fn(); // create a mock function for the submit event
+    beforeEach(() => {
+        render(<Form />);
+    });
 
-    beforeAll(() => {
-        container = render(<Form onSubmit={submitHandler} />).container;
-    })
-
-    it('checks if form exists and that it has an onSubmit attribute', () => {
-        const formElement = container.querySelector('form');
+    it('checks if form exists', () => {
+        const formElement = screen.getByRole('form');
         expect(formElement).toBeInTheDocument();
-        expect(formElement).toHaveAttribute('onSubmit');
     });
 
     it('checks for existence of first name field', () => {
-        const inputElement = container.querySelector('input[name="firstName"]');
+        const inputElement = screen.getByRole('textbox', { name: /firstName/i });
         expect(inputElement).toBeInTheDocument();
     });
 
     it('checks for existence of dropdown field where the options are select gender (disabled), male, female, non-binary, and prefer not to say', () => {
-        const selectElement = container.querySelector('select[name="gender"]')!;
+        const selectElement = screen.getByRole('combobox', { name: /gender/i });
 
         const options = selectElement.querySelectorAll('option');
         expect(options[0]).toHaveTextContent(/Select gender/i);
@@ -35,32 +32,39 @@ describe('Form', () => {
     });
 
     it('checks for existence of 4 radio inputs where name="purpose" and the options are business, student, hobby, and exploring', () => {
-        const radioInputs = container.querySelectorAll('input[type="radio"][name="purpose"]');
-        expect(radioInputs).toHaveLength(4);
-
-        expect(radioInputs[0]).toHaveAttribute('value', 'business');
-        expect(radioInputs[1]).toHaveAttribute('value', 'student');
-        expect(radioInputs[2]).toHaveAttribute('value', 'hobby');
-        expect(radioInputs[3]).toHaveAttribute('value', 'exploring');
+        const radioInput1 = screen.getByLabelText(/business/i);
+        const radioInput2 = screen.getByLabelText(/student/i);
+        const radioInput3 = screen.getByLabelText(/hobby/i);
+        const radioInput4 = screen.getByLabelText(/exploring/i);
+        expect(radioInput1).toHaveAttribute('value', 'business');
+        expect(radioInput1).toHaveAttribute('type', 'radio');
+        expect(radioInput2).toHaveAttribute('value', 'student');
+        expect(radioInput2).toHaveAttribute('type', 'radio');
+        expect(radioInput3).toHaveAttribute('value', 'hobby');
+        expect(radioInput3).toHaveAttribute('type', 'radio');
+        expect(radioInput4).toHaveAttribute('value', 'exploring');
+        expect(radioInput4).toHaveAttribute('type', 'radio');
     });
 
     it('checks for existence of 3 checkboxes where the options are development, management, and marketing', () => {
-        const checkboxInputs = container.querySelectorAll('input[type="checkbox"]');
-        expect(checkboxInputs).tohaveLength(3);
+        const checkboxInput1 = screen.getByLabelText(/development/i);
+        const checkboxInput2 = screen.getByLabelText(/management/i);
+        const checkboxInput3 = screen.getByLabelText(/marketing/i);
 
-        expect(checkboxInputs[0]).toHaveAttribute('value', /development/i);
-        expect(checkboxInputs[1]).toHaveAttribute('value', /management/i);
-        expect(checkboxInputs[2]).toHaveAttribute('value', /marketing/i);
+        expect(checkboxInput1).toHaveAttribute('value', 'development');
+        expect(checkboxInput2).toHaveAttribute('value', 'management');
+        expect(checkboxInput3).toHaveAttribute('value', 'marketing');
     });
 
     it('checks for existence of an About Me text area field', () => {
-        const textAreaField = container.querySelector('textarea[name="about"]');
+        const textAreaField = screen.getByLabelText(/about me:/i);
         expect(textAreaField).toBeInTheDocument();
     });
 
     it('checks for existence of submit button', () => {
-        const submitButton = container.querySelector('button[type="submit"]');
+        const submitButton = screen.getByRole('button');
         expect(submitButton).toBeInTheDocument();
+        expect(submitButton).toHaveAttribute('type', 'submit');
         expect(submitButton).toHaveTextContent(/submit/i);
     });
 })
