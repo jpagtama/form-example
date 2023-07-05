@@ -1,14 +1,18 @@
-import { useState } from 'react'
-import './App.css'
+import './App.css';
+import Form from './components/Form';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+
+  const styles = {
+    "alignSelf": "center",
+    "paddingBottom": "2rem",
+    "fontSize": "clamp(3rem, 1rem + 10vw, 5rem)"
+  }
 
   return (
-    <>
-      <h1>Hello World</h1>
-    </>
+    <div className={`app lightMode`}>
+      <h1 style={styles} >Form Example</h1>
+      <Form />
+    </div>
   )
-}
-
-export default App
+};
