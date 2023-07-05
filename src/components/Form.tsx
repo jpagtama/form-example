@@ -48,10 +48,8 @@ const Form = () => {
             </div>
 
             <div className={styles.textAreaContainer}>
-                <label htmlFor="about">
-                    About Me:
-                    <textarea className={styles.aboutTextArea} name="about" id="about" ></textarea>
-                </label>
+                <label htmlFor="about" className={styles.aboutLabel}> About Me:</label>
+                <textarea className={styles.aboutTextArea} name="about" id="about" ></textarea>
             </div>
 
             <div className={styles.submitContainer}>
