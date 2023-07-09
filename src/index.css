@@ -1,3 +1,8 @@
+:root {
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -16,11 +21,6 @@
   --text-color: #121212;
   --accent-color: lightseagreen;
   --link-color: dodgerblue;
-}
-
-:root {
-  font-family: Tahoma, Verdana, Segoe, sans-serif;
-  scroll-behavior: smooth;
 }
 
 body {
