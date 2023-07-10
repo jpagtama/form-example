@@ -8,19 +8,19 @@
 }
 
 .darkMode {
-  --primary-color: seagreen;
+  --primary-color: teal;
   --background-color: #121212;
   --text-color: #f5f5f5;
-  --accent-color: lightseagreen;
-  --link-color: deepskyblue;
+  --accent-color: mediumseagreen;
+  --link-color: cornflowerblue;
 }
 
 .lightMode {
-  --primary-color: darkseagreen;
+  --primary-color: teal;
   --background-color: #f5f5f5;
   --text-color: #121212;
-  --accent-color: lightseagreen;
-  --link-color: dodgerblue;
+  --accent-color: mediumseagreen;
+  --link-color: cornflowerblue;
 }
 
 body {
@@ -29,7 +29,7 @@ body {
   min-height: 100vh;
   padding: 0;
   margin: 0;
-  background-color: #aaaaaa;
+  background-color: #121212;
   font-weight: 300;
 }
 
