@@ -1,9 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Form from './components/Form';
 import './App.css';
 
 export default function App() {
   const [mode, setMode] = useState('dark');
+
+  useEffect(() => {
+    document.body.classList.remove('darkMode', 'lightMode');
+    document.body.classList.add(`${mode}Mode`);
+  }, [mode]);
 
   const modeHandler = () => {
     switch (mode) {
@@ -28,18 +33,19 @@ export default function App() {
     "cursor": "pointer"
   }
 
-  const linkStyles = {
-    "alignSelf": "center"
-  }
-
   return (
-    <div className={`app ${mode}Mode`}>
+    <div className={`app`}>
       <header >
         <h1 >Form Example</h1>
       </header>
       <button style={modeButton} onClick={modeHandler} >{`${mode === 'dark' ? 'light' : 'dark'} mode`}</button>
-      <a style={linkStyles} href="">this is a link</a>
       <Form />
+      <footer>
+        <ul className={`footerContent`} >
+          <li>Created by Julian Pagtama</li>
+          <li>View the <a href="https://github.com/jpagtama/form-example">code</a></li>
+        </ul>
+      </footer>
     </div>
   )
 };
