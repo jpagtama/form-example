@@ -11,14 +11,20 @@ const useTextarea = () => {
 
         setValue(val);
 
-        if (isRequired && !val.trim().length) {
+        if (isRequired) errorHandler(val);
+    }
+
+    const errorHandler = (value: string) => {
+        if (!value.trim().length) {
             setError({ hasError: true, message: 'Please fill this out' });
+            return true;
         } else {
             setError({ hasError: false });
+            return false;
         }
     }
 
-    return { value, changeHandler, error };
+    return { value, changeHandler, errorHandler, error };
 }
 
 export default useTextarea;

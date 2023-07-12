@@ -24,15 +24,21 @@ const useCheckbox = () => {
             });
         }
 
-        if (isRequired && !updatedValues.length) {
-            setError({ hasError: true, message: 'Please make a selection' });
-        } else {
-            setError({ hasError: false });
-        }
-
+        if (isRequired) errorHandler(updatedValues);
     }
 
-    return { values, changeHandler, error }
+    const errorHandler = (values: string[]) => {
+        if (!values.length) {
+            setError({ hasError: true, message: 'Please make a selection' });
+            return true;
+        }
+        else {
+            setError({ hasError: false });
+            return false;
+        }
+    }
+
+    return { values, changeHandler, errorHandler, error }
 }
 
 export default useCheckbox;

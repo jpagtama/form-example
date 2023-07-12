@@ -13,14 +13,21 @@ const useInput = () => {
         const isRequired = e.target.required;
         const value = e.target.value;
         setValue(value);
-        if (isRequired && !value.trim().length) {
-            setError({ hasError: true, message: 'Please enter a value' });
-        } else {
-            setError({ hasError: false });
-        }
+        if (isRequired) errorHandler(value);
     }
 
-    return { value, inputHandler, error };
+    const errorHandler = (value: string) => {
+        if (!value.trim().length) {
+            setError({ hasError: true, message: 'Please enter a value' });
+            return true;
+        } else {
+            setError({ hasError: false });
+            return false;
+        }
+
+    }
+
+    return { value, inputHandler, errorHandler, error };
 }
 
 export default useInput;
