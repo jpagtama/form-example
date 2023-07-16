@@ -12,4 +12,4 @@ This example was created with no form libraries and uses custom hooks to manage 
 - Vite
 - Custom hooks
 - TypeScript/JavaScript
-- Jest
+- Jest/Vitest
