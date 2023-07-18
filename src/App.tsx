@@ -22,23 +22,21 @@ export default function App() {
     }
   }
 
-  const modeButton = {
-    "minWidth": "5rem",
-    "padding": "0.5rem 1rem",
-    "border": "none",
-    "borderRadius": "5px",
-    "backgroundColor": "var(--primary-color)",
-    "color": "var(--text-color)",
-    "alignSelf": "center",
-    "cursor": "pointer"
-  }
-
   return (
     <div className={`app`}>
       <header >
         <h1 >Form Example</h1>
       </header>
-      <button style={modeButton} onClick={modeHandler} >{`${mode === 'dark' ? 'light' : 'dark'} mode`}</button>
+      <button style={{
+        "minWidth": "5rem",
+        "padding": "0.5rem 1rem",
+        "border": "none",
+        "borderRadius": "5px",
+        "backgroundColor": "var(--primary-color)",
+        "color": "var(--text-color)",
+        "alignSelf": "center",
+        "cursor": "pointer"
+      }} onClick={modeHandler} >{`${mode === 'dark' ? 'light' : 'dark'} mode`}</button>
       <Form />
       <footer>
         <ul className={`footerContent`} >
