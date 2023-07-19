@@ -48,12 +48,12 @@ const Form = () => {
             <div className={styles.topContainer}>
                 <div className={styles.textFieldContainer} >
                     <label htmlFor="firstName"> First Name: <span className={`errorMessage`}>{firstNameError.hasError && firstNameError.message}</span> </label>
-                    <input id="firstName" aria-label="firstName" name="firstName" type="text" value={firstNameVal} onChange={firstNameHandler} required />
+                    <input id="firstName" aria-label="firstName" name="firstName" type="text" value={firstNameVal} onChange={firstNameHandler} autoComplete='off' required />
                 </div>
 
                 <div className={styles.textFieldContainer} >
                     <label htmlFor="lastName"> Last Name: {<span className={`errorMessage`} >{lastNameError.hasError && lastNameError.message}</span>} </label>
-                    <input id="lastName" aria-label="lastName" name="lastName" type="text" value={lastNameVal} onChange={lastNameHandler} required />
+                    <input id="lastName" aria-label="lastName" name="lastName" type="text" value={lastNameVal} onChange={lastNameHandler} autoComplete='off' required />
                 </div>
 
                 <div className={styles.dropDownContainer}>
